@@ -4,7 +4,7 @@ require "sqlite3"
 require "json"
 require "pry-byebug"
 
-DB_NAME = "training_text.db"
+DB_NAME = "markovtoy.sqlite3"
 
 # Delete and recreate database if it doesn't exist
 File.delete(DB_NAME) if File.exist?(DB_NAME)
@@ -45,4 +45,4 @@ Dir.glob("processed/*.txt") do |filename|
   )
 end
 
-
+puts "\nYou probably want to copy this DB into your app directory now; `mv #{DB_NAME} ../rails-markovtoy/db` or something like that."
