@@ -1,4 +1,4 @@
-﻿{"title": "The Brothers Karamazov (Full)"}
+{"title": "The Brothers Karamazov (Full)", "author": "Fyodor Dostoevsky"}
 
 PART I
 
