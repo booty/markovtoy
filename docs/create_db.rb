@@ -21,18 +21,28 @@ SQL
 # Iterate through files in processed/ and import
 Dir.glob("processed/*.txt") do |filename|
   puts "Parsing #{filename}"
-  text = File.read(filename)
+  body = File.read(filename)
 
   # String#dump strips invisible characters that can cause JSON parsing errors
-  first_newline_position = text.index("\n")
+  first_newline_position = body.index("\n")
   metadata = JSON.parse(
-    text[0..first_newline_position-1]
+    body[0..first_newline_position-1]
   )
   # binding.pry
-  text = text[first_newline_position..]
-  word_count = text.split(" ").length
+  body = body[first_newline_position..]
+  word_count = body.split(" ").length
 
   puts "...title:#{metadata["title"]} author:#{metadata["author"]} words:#{word_count}"
+
+  db.execute(
+    "insert into texts (name, author, word_count, body) values (?, ?, ?, ?)",
+    [
+      metadata["name"],
+      metadata["author"],
+      word_count,
+      body
+    ]
+  )
 end
 
 
