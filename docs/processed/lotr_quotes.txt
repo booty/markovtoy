@@ -1,4 +1,4 @@
-{"title": "LOTR Quotes"}
+{"title": "LOTR Quotes", "author": "JRR Tolkien"}
 
 Not all those who wander are lost.
 
