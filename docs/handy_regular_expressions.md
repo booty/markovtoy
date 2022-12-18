@@ -60,3 +60,29 @@ Ge12:2 And I will make of thee a great nation, and I will bless thee, and make t
 Ge12:3 And I will bless them that bless thee, and curse him that curseth thee: and in thee shall all families of the earth be blessed.
 ```
 
+### Find Section Headers
+
+```
+^([A-Z0-9][a-z\.]+\s){3,}$
+```
+
+```
+^(Example|Chapter)\s\d.{1,30}$
+```
+
+Example:
+
+```
+Application Protocol Design
+
+In Chapter 7, we'll discuss the advantages of breaking complicated applications up into cooperating processes speaking an application-specific command set or protocol with each other. All the good reasons for data file formats to be textual apply to these application-specific protocols as well.
+
+When your application protocol is textual and easily parsed by eyeball, many good things become easier. Transaction dumps become much easier to interpret. Test loads become easier to write.
+
+Server processes are often invoked by harness programs such as inetd(8) in such a way that the server sees commands on standard input and ships responses to standard output. We describe this
+"CLI server" pattern in more detail in Chapter 11.
+
+Chapter 5. Textuality
+```
+
+It will match the first and the last lines because they are in title case. Titles are usually not grammatically correct so they tend to mess up the markov chain-fu.
