@@ -11,33 +11,34 @@ File.delete(DB_NAME) if File.exist?(DB_NAME)
 db = SQLite3::Database.new(DB_NAME)
 db.execute <<~SQL
   create table texts (
-    name varchar(50),
+    id integer primary key autoincrement not null,
+    title varchar(50) not null,
     author varchar(50),
-    word_count integer,
-    body text
+    word_count integer not null,
+    body text not null
   );
 SQL
 
 # Iterate through files in processed/ and import
+# This could be a lot more efficient, but it runs
+# in 1-2sec so whatever yolo.
 Dir.glob("processed/*.txt") do |filename|
   puts "Parsing #{filename}"
   body = File.read(filename)
 
-  # String#dump strips invisible characters that can cause JSON parsing errors
   first_newline_position = body.index("\n")
   metadata = JSON.parse(
     body[0..first_newline_position-1]
   )
-  # binding.pry
   body = body[first_newline_position..]
   word_count = body.split(" ").length
 
-  puts "...title:#{metadata["title"]} author:#{metadata["author"]} words:#{word_count}"
+  puts " ...title:'#{metadata["title"]}' author:'#{metadata["author"]}' words:#{word_count}"
 
   db.execute(
-    "insert into texts (name, author, word_count, body) values (?, ?, ?, ?)",
+    "insert into texts (title, author, word_count, body) values (?, ?, ?, ?)",
     [
-      metadata["name"],
+      metadata["title"],
       metadata["author"],
       word_count,
       body
@@ -45,4 +46,4 @@ Dir.glob("processed/*.txt") do |filename|
   )
 end
 
-puts "\nYou probably want to copy this DB into your app directory now; `mv #{DB_NAME} ../rails-markovtoy/db` or something like that."
+puts "\nYou probably want to copy this DB into your app directory now; `mv #{DB_NAME} ../rails-markovtoy/db/development.sqlite3` or something like that."
