@@ -1,0 +1,11 @@
+hi there!
+
+<hr>
+
+<%= form_with do |form| %>
+	<% @texts.each do |text| %>
+		<% text.title %>
+	<% end %>
+	<%= form.collection_check_boxes :text_id, @texts, :id, :title %>
+<%= form.submit "Generate Stuff" %>
+<% end %>
