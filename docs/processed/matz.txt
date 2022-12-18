@@ -1,0 +1,66 @@
+{"title": "Quotes From Matz", "author": "Matz"}
+In the design of the Ruby language we have been primarily focused on productivity and the joy of programming. As a result, Ruby was too slow, because we focused on run-time efficiency, so we’ve tried to do many things to make Ruby faster. For example the engine in Ruby 1.8 was very slow, it was written by me. Then Koichi came in and we replaced the virtual machine. The new virtual machine runs many times faster. Ruby and the Ruby community have continued to grow, and some people still complain about the performance. So we are trying to do new things to boost the performance of the virtual machine. Even though we are an open source project and not a business, I felt it was important for us to set some kind of goal, so I named it Ruby 3x3. The goal is to make Ruby 3 run three times faster as compared to Ruby 2.0. Other languages, for example Java, use the JIT technique, just in time compilation; we don't use that yet in Ruby. So by using that kind of technology and with some other improvements, I think we can accomplish the three times boost.
+
+Yes, that's an important point. So in the Ruby 3x3 project, we are comparing the speed of Ruby 3.0 with the speed of Ruby 2.0. We have completed many performance improvements in Ruby 2.1 and 2.3, so we want to include that effort in Ruby 3x3. The baseline is Ruby 2.0. This is the classification. 
+
+Our simple micro-benchmark may run three times faster but we are worried that a real-world application may be slower, it could happen. So we are going to set up some benchmarks to measure Ruby 3x3. We will measure our progress towards this three times goal using those benchmark suites. We haven't set them all up yet but they likely include at least optcarrot (an NES emulator) and some small Rails applications, because Rails is the major application framework for the Ruby language. We’ll include several other types of benchmarks as well. So we have to set that up, we are going to set up the benchmark suites.
+
+We have already added the generational garbage collector and incremental garbage collection. So in some cases, some applications, large web applications for example, may no longer need to do that out-of-band garbage collection.
+
+It's no longer a bottleneck so the priority is lower now.
+
+Making it easier to separate the heap.
+
+We have three major goals in Ruby 3. One of them is performance, which is that our program is really running three times faster. The second goal is the concurrency model, which is implemented by something like Ruby guilds.
+
+I say concurrency just because the guild is the concurrency model from the programmer's view. Implementation-wise it should be parallelism.
+
+We already have threads. Threads are mostly ok but it doesn't run parallel, due to the existing GIL. So guilds are a performance optimization. Concurrency by guilds may make the threading program or the concurrency runtime program faster, but the main topic is the data abstraction for concurrent projects. 
+
+A guild is like some kind of bin, a container with objects. With it, you cannot access the objects inside the guild from outside, because the objects are members of the guild. However, you can transfer the objects from one guild to another. So, by transferring, the new objects can be accessed in the destination guild.
+
+The JIT is a pretty attractive technology for gaining performance. You know, as part of the Ruby 3x3 effort we are probably going to introduce some kind of JIT. Many other virtual machines have introduced the LLVM JIT. However, personally, I don't want to use the LLVM JIT for Ruby 3, just because the LLVM itself is a huge project, and it's much younger than Ruby. Ruby is more than twenty years old. It's possibly going to live for twenty more years, or even longer, so relying on other huge projects is kind of dangerous.
+
+JRuby people implement very nice de-optimization technologies. They made just such a de-optimization framework on the Java Virtual Machine, so on this topic at least they are a bit ahead of us.
+
+Unlike the typical application, the language can be applied anywhere, so it can be used to write Rails applications, or science applications, or games, so I don't think improving that one thing will necessarily change that situation. So we have to do everything, maybe introducing ropes, introducing a JIT in some form, introducing some other mechanisms as well to see that improvement. We have to do it.
+
+I like pattern matching, including the right-hand assignment. At the same time, I'm very excited about the ractors and the static type checking, because I think it will change and enhance the culture of Ruby programming.
+
+When I started Ruby programming, the Ruby community was pretty small. So it was okay to throw out the older version and break the syntax of the Ruby language at that time. But as time has gone by and the Ruby community has grown bigger, with millions of Ruby programmers all over the world, even the tiniest change can now break things.
+
+Language designers want to make progress, make changes, improve the language. But if it comes at the cost of compatibility, that is not good. We try to keep compatibility as much as we can.
+
+My major info channel is Ruby Redmine. We have tons of proposals from the community, and those proposals inspire me to design new features. I have to reject most of them, but these ideas to improve the language inspire me to design new ideas.
+
+Before the pandemic, I attended many conferences and talked with people about Ruby, and programming in general, so that I could see the obstacles, the irritations, or the drawbacks of the language and the environments, and then I tried to improve them. These kinds of talks and conversations inspired me a lot. And that's one big drawback of the pandemic, that I couldn’t have those kinds of conversations any longer, for the last year and a half.
+
+Also, I surf the Internet and read blogs about programming languages and Ruby. Those articles inspire me as well.
+
+The choice of the application server directly affects the choice of the concurrency system.
+
+Since some years ago, I have been focusing on the microbenchmark performance. It is kind of silly, but it is due to the instincts of web developers.
+
+In our daily lives as programmers, we process text strings a lot. So I tried to work hard on text processing, namely the string class and regular expressions. Regular expressions are built into the language and are very tuned up for use.
+
+People are different. People choose different criteria. But if there is a better way among many alternatives, I want to encourage that way by making it comfortable. So that's what I've tried to do.
+
+Actually, I didn't make the claim that Ruby follows the principle of least surprise. Someone felt the design of Ruby follows that philosophy, so they started saying that. I didn't bring that up, actually.
+
+You want to enjoy life, don't you? If you get your job done quickly and your job is fun, that's good isn't it? That's the purpose of life, partly. Your life is better.
+
+Because of the Turing completeness theory, everything one Turing-complete language can do can theoretically be done by another Turing-complete language, but at a different cost. You can do everything in assembler, but no one wants to program in assembler anymore.
+
+Ruby inherited the Perl philosophy of having more than one way to do the same thing. I inherited that philosophy from Larry Wall, who is my hero actually. I want to make Ruby users free. I want to give them the freedom to choose.
+
+The orthogonal features, when combined, can explode into complexity.
+
+Man is driven to create; I know I really love to create things. And while I'm not good at painting, drawing, or music, I can write software.
+
+It is not the responsibility of the language to force good looking code, but the language should make good looking code possible.
+
+Plant a memory, plant a tree, do it today for tomorrow.
+
+I didn't work hard to make Ruby perfect for everyone, because you feel differently from me. No language can be perfect for everyone. I tried to make Ruby perfect for me, but maybe it's not perfect for you. The perfect language for Guido van Rossum is probably Python.
+
+Often people, especially computer engineers, focus on the machines. But in fact we need to focus on humans, on how humans care about doing programming or operating the application of the machines.
