@@ -1,4 +1,22 @@
-{"title": "Upstart Press Releases"}
+{"title": "Upstart (About & PR)"}
+Upstart is a leading artificial intelligence (AI) lending marketplace designed to improve access to affordable credit while reducing the risk and costs of lending for our bank partners. By leveraging Upstart's AI marketplace, Upstart-powered banks can offer higher approval rates and experience lower default rates, while simultaneously delivering the exceptional digital-first lending experience their customers demand.
+
+AI is upending existing industries and creating new ones. Whether self-driving cars, home assistants, or language translation, software that learns and improves on its own has moved from research labs to the mainstream in just a few years.
+
+Upstart is one of the first to apply AI to the multi-trillion dollar credit industry. Upstart goes beyond the FICO score, using non-conventional variables at scale to provide superior loan performance and improve consumers' access to credit.
+
+The system improves constantly, learning and optimizing in response to daily loan-level repayment and delinquency data.
+
+Upstart's model is significantly more accurate than traditional lending models; allowing us to approve more applicants at lower loss rates.
+
+AI has the opportunity to improve most types of lending globally over the next decade. While Upstart is focused today on the US consumer market, similar techniques can be applied to all credit markets.
+
+Upstart has worked with regulators since inception to ensure it operates safely within the law.
+AI-based lending expands access to affordable credit by constantly finding new ways to identify qualified borrowers. Yet an AI based model must avoid unlawful disparate impact or statistical bias, that would be harmful to disadvantaged groups.
+
+Upstart has demonstrated that our marketplace doesn’t introduce bias to the credit decision process and has developed reporting procedures to ensure future versions of the model will continue to be fair. In September 2017, Upstart became the first company to receive a No Action Letter (NAL) from the Consumer Financial Protection Bureau (CFPB). The purpose of such letters is to reduce potential regulatory uncertainty for innovative products that may offer significant consumer benefit. On November 30, 2020, at the expiration of the first NAL, Upstart received a new NAL from the CFPB for a 3-year term. On June 8, 2022, the CFPB terminated the program at Upstart's request.
+
+Upstart (NASDAQ: UPST) is a leading AI lending marketplace partnering with banks and credit unions to expand access to affordable credit. By leveraging Upstart’s AI platform, Upstart-powered banks and credit unions can have higher approval rates and lower loss rates for every race, ethnicity, age, and gender, while simultaneously delivering the exceptional digital-first lending experience their customers demand. More than two-thirds of Upstart loans are approved instantly and are fully automated. Upstart was founded by ex-Googlers in 2012 and is based in San Mateo, California and Columbus, Ohio.
 Upstart, a leading artificial intelligence (AI) lending marketplace, today announced Upstart Auto Retail’s certification as a Honda Digital Solutions (HDS) partner. As an HDS Digital Retailing solution, Upstart Auto Retail’s modern car buying software is now available to Honda dealers and customers nationwide.
 
 “Honda has always had some of the most loyal customers, and our digital retail platform will enable Honda dealers to provide a best-in-class purchasing experience and boost sales.”
