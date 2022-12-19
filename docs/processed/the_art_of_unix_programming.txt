@@ -136,7 +136,7 @@ Sometimes we mention a Unix application (such as Emacs, without a manual-section
 
 
 
-~JOC~
+
 
 
 
@@ -1338,7 +1338,7 @@ What we will do here is examine more specifically what the Unix tradition teache
 
 
 
-~TU8~
+
 
 
 
@@ -1359,7 +1359,7 @@ It is possible, however, to push this kind of decomposition too hard and make yo
 
 
 
-"TU9"
+
 
 
 
@@ -1761,7 +1761,7 @@ If your records have an unstructured text part, your record -jar format is close
 
 
 
-"T4T"
+
 
 
 
@@ -1769,7 +1769,6 @@ If your records have an unstructured text part, your record -jar format is close
 
 Record-jar format is appropriate for sets of field-attribute associations that are like DSV files, but have a variable repertoire of fields, and possibly unstructured text associated with them.
 
-XML
 
 XML is a very simple syntax resembling HTML — angle-bracketed tags and ampersand-led literal sequences. It is about as simple as a plain-text markup can be and yet express recursively nested data structures. XML is just a low-level syntax; it requires a document type definition (such as XHTML) and associated application logic to give it semantics.
 
@@ -1792,7 +1791,6 @@ Example 5.5 is a simple example of an XML-based configuration file. It is part o
 
 
 
-T5T
 
 
 
@@ -1852,7 +1850,7 @@ Many Microsoft Windows programs use a textual data format that looks like Exampl
 
 [python]
 
-[sng]
+
 
 
 
@@ -2023,7 +2021,7 @@ Example 5.8 is an example POP3 session. In the example, C: lines are sent by the
 
 
 
-~T3U~
+
 
 
 
@@ -2089,7 +2087,6 @@ There are a few differences. The most obvious one is that POP3 uses status token
 
 
 
-T5T
 
 
 
@@ -2158,7 +2155,6 @@ IMAP delimits payloads in a slightly different way. Instead of ending the payloa
 
 
 
-T5T
 
 
 
@@ -2557,7 +2553,6 @@ Pipes depend on the convention that every program has initially available to it 
 
 
 
-T9T
 
 
 
@@ -2729,14 +2724,6 @@ Bernstein's rblsmtpd package is a prototypical example. It serves to look up a h
 
 'A common error is to use $* rather than "$@". This does bad things when handed a filename with embedded spaces.
 
-
-
-T9W
-
-
-
-
-
 Another example can be found in Bernstein's qmail package. It contains a program called con- dredirect. The first parameter is an email address, and the remainder a gatekeeper program and arguments, condredirect forks and execs the gatekeeper with its arguments. If the gatekeeper exits successfully, condredirect forwards the email pending on stdin to the specified email address. In this case, opposite to that of rblsmtpd, the security decision is made by the child; this case is a bit more like a classical shellout.
 
 A more elaborate example is the qmail POP3 server. It consists of three programs, qmail-popup, checkpassword, and qmail-pop3d. Checkpas sword comes from a separate package cleverly called checkpassword, and unsurprisingly it checks the password. The POP3 protocol has an authentication phase and mailbox phase; once you enter the mailbox phase you cannot go back to the authentication phase. This is a perfect application for Bernstein chaining.
@@ -2752,15 +2739,6 @@ For example, rblsmtpd (mentioned above) can be inserted into a Bernstein chain, 
 
 "You are not expected to understand this".
 
-
-
-"TW
-
-
-
-
-
-
 Occasionally, child programs both accept data from and return data to their callers through pipes con- nected to standard input and output, interactively. Unlike simple shellouts and what we have called
 'bolt-ons' above, both master and slave processes need to have internal state machines to handle a protocol between them without deadlocking or racing. This is a drastically more complex and more difficult-to-debug organization than a simple shellout.
 
@@ -2770,22 +2748,9 @@ When writing a master/slave pair, it is good practice for the master to support 
 
 If you find that master/slave interactions in your program are becoming nontrivial, it may be time to think about going the rest of the way to a more peer-to-peer organization, using techniques like sockets or shared memory.
 
-
 One common case in which the implied protocol really is trivial is progress meters. The scp secure-copy command calls ssh as a slave process, intercepting enough information from ssh's standard output to reformat the reports as an ASCII animation of a progress bar. 73
 
-
 All the communication methods we've discussed so far have a sort of implicit hierarchy about them, with one program effectively controlling or driving another and zero or limited feedback passing in the opposite direction. In communications and networking we frequently need channels that are peer-to-peer, usually (but not necessarily) with data flowing freely in both directions. We'll
-
-
-
-
-
-
-
-
-
-
-
 
 The use of tempfiles as communications drops between cooperating programs is the oldest IPC technique there is. Despite drawbacks, it's still useful in shellscripts, and in one-off programs where a more elaborate and coordinated method of communication would be overkill.
 
@@ -2797,16 +2762,6 @@ All these problems aside, tempfiles still have a niche because they're easy to s
 
 
 The simplest and crudest way for two processes on the same machine to communicate with each other is for one to send the other a signal. Unix signals are a form of soft interrupt; each one has a default effect on the receiving process (usually to kill it). A process can declare a signal handler that overrides the default action for the signal; the handler is a function that is executed asynchronously when the signal is received.
-
-
-
-
-
-
-
-
-
-
 
 Signals were originally designed into Unix as a way for the operating system to notify programs of certain errors and critical events, not as an IPC facility. The sighup signal, for example, is sent to every program started from a given terminal session when that session is terminated. The sigint signal is sent to whatever process is currently attached to the keyboard when the user enters the currently-defined interrupt character (often control-C). Nevertheless, signals can be useful for some IPC situations (and the POSIX-standard signal set includes two signals, siGUSRl and SIGUSR2, intended for this use). They are often employed as a control channel for daemons (programs that run constantly, invisibly, in background), a way for an operator or another program to tell a daemon that it needs to either reinitialize itself, wake up to do work, or write internal-state/debugging information to a known location.
 
@@ -3039,7 +2994,7 @@ To add insult to injury, threading has performance costs that erode its advantag
 
 
 
-"ITT"
+
 
 
 
@@ -3134,35 +3089,6 @@ We'll need to start by doing a little taxonomy, so we'll know what we're talking
 
 
 All the languages in Figure 8.1 are described in case studies, either in this chapter or elsewhere in this book. For the general-purpose interpreters near the right-hand side, see Chapter 14.
-
-
-
-Figure 8.1. Taxonomy of languages.
-
-
-
-
-
-
-
-
-
-
-
-
-Data formats
-
-
-
-
-
-
-"ITT
-
-
-
-
-
 In Chapter 5 we looked at Unix conventions for data files. There's a spectrum of complexity in these. At the low end are files that make simple associations between names and properties; the
 /etc/passwd and .newsrc formats are good examples. Further up the scale we start to get formats that marshal or serialize data structures; the PNG and SNG formats are (equivalent) good examples of this.
 
@@ -3180,7 +3106,7 @@ The spectrum of minilanguages ranges from declarative (with implicit actions) to
 
 
 
-~2TE~
+
 
 
 
@@ -3366,7 +3292,6 @@ Accept any num- ber of instances of the previous ele- ment.
 
 
 
-{n}
 
 
 
@@ -3540,35 +3465,6 @@ Restricted interface to the rest of the world. XSLT processors are designed to f
 
 "Whether or not "macro expansion" should be spelled "macroexpansion" is a matter for some dispute. The latter is found
 
-
-
-
-
-
-
-
-
-
-<?xml version="l . 0"?>
-
-<xsl : stylesheet xmlns : xsl = "http : //www . w3 . org/1 9 99/XSL/ Transform" version=" 1 . ">
-<xsl: output method="xml" />
-<xsl : template match="*">
-<xsl: element name=" {name ( ) } ">
-<xsl : f or-each select="@*">
-<xsl: element name=" {name ( ) } ">
-
-<xsl : value-of select="."/>
-</xsl : element>
-</xsl : f or-each>
-
-<xsl : apply- templates select = "* Itext () "/>
-</xsl : element>
-</xsl : tempi at e>
-</xsl:stylesheet>
-
-
-
 The program in Example 8.3 transforms an XML document so that each attribute of every element is transformed into a new tag pair directly enclosed by that element, with the attribute value as the tag pair's content.
 
 We've included a glance at XSLT here partly to illustrate the point that 'declarative' does not imply either 'simple' or 'weak', and mostly because if you have to work with XML documents, you will someday have to face the challenge that is XSLT.
@@ -3576,20 +3472,7 @@ We've included a glance at XSLT here partly to illustrate the point that 'declar
 XSLT: Mastering XML Transformations [Tidwell] is a good introduction to the language. A brief tutorial with examples is available on the Web. 85
 
 
-The troff typesetting formatter was, as we noted in Chapter 2, Unix's original killer application. troff is the center of a suite of formatting tools (collectively called Documenter's Workbench or
-
-
-
-
-
-
-~JI9~
-
-
-
-
-
-DWB), all of which are domain-specific minilanguages of various kinds. Most are either prepro- cessors or postprocessors for troff markup. Open-source Unixes host an enhanced implementation of Documenter's Workbench called groff, from the Free Software Foundation.
+The troff typesetting formatter was, as we noted in Chapter 2, Unix's original killer application. troff is the center of a suite of formatting tools (collectively called Documenter's Workbench or DWB), all of which are domain-specific minilanguages of various kinds. Most are either prepro- cessors or postprocessors for troff markup. Open-source Unixes host an enhanced implementation of Documenter's Workbench called groff, from the Free Software Foundation.
 
 We'll examine troff in more detail in Chapter 18; for now, it's sufficient to note that it is a good example of an imperative minilanguage that borders on being a full-fledged interpreter (it has conditionals and recursion but not loops; it is accidentally Turing-complete).
 
@@ -3601,21 +3484,6 @@ The preprocessors are more interesting, because they actually add capabilities t
 Some other preprocessors have no open-source implementation and are no longer in common use. Best known of these was ideal, for graphics. A younger sibling of the family, chem, draws chemical structural formulas; it is available as part of Bell Labs's netlib code. 86
 
 Each of these preprocessors is a little program that accepts a minilanguage and compiles it into troff requests. Each one recognizes the markup it is supposed to interpret by looking for a unique start and end request, and passes through unaltered any markup outside those (tbl looks for .TS/.TE, pic looks for .PS/.PE, etc.). Thus, most of the preprocessors can normally be run in any order without stepping on each other. There are some exceptions: in particular, chem and grap both issue pic commands, and so must come before it in the pipeline.
-
-
-
-I groff -Tps >thesis.ps
-
-
-
-
-
-
-
-
-
-
-
 
 The preceding is a full-Monty example of a Documenter's Workbench processing pipeline, for a hypothetical thesis incorporating chemical formulas, mathematical equations, tables, bibliographies, plots, and diagrams. (The cat command simply copies its input or a file argument to its output; we use it here to emphasize the order of operations.) In practice modern troff implementations tend to support command-line options that can invoke at least tbl, eqn and pic, so it isn't necessary to write such an elaborate pipeline. Even if it were, these sorts of build recipes are normally composed just once and stashed away in a makefile or shellscript wrapper for repeated
 
@@ -4678,7 +4546,6 @@ Occasionally -e has the sense of 'exclude' or 'expression'.
 
 
 
-~m~
 
 
 
@@ -5021,7 +4888,6 @@ Figure 11.1. The xcalc GUI.
 
 
 
-DEG
 
 
 
@@ -5040,13 +4906,11 @@ CE/C
 AC
 
 
-INV
 
 
 
 
 
-DRG
 
 
 
@@ -5067,7 +4931,6 @@ TT
 
 
 
-STO
 
 
 
@@ -5078,7 +4941,6 @@ STO
 
 
 
-RCL
 
 
 
@@ -5089,7 +4951,6 @@ RCL
 
 
 
-SUM
 
 
 
@@ -5100,7 +4961,6 @@ SUM
 
 
 
-EXC
 
 
 
@@ -5496,95 +5356,18 @@ Another excellent example of this pattern is the xcdroastlcdrtools combination. 
 
 
 
-
-
-
-
-
-
-
-
-
-
-Back to main menu
-
-
-
-X- CD- Roast
-
-
-
-
-
-
-
-
-
-PLEXTOR CD-ROM
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-HF"
-
-
-
-
-
-
-
-
-Reading audio track 1i
-
-
-
-
-
-
-
-
-
-
-
 A key pitfall of driver/engine organization is that frequently the driver must understand the state of the engine in order to reflect it to the user. If the engine action is practically instantaneous, it's not a problem, but if the engine can take a long time (e.g., when accessing many URLs) the lack of feedback can be a significant issue. A similar problem is responding to errors. For example, the traditional (although not very Unix-like) confirmation question about whether it's OK to overwrite a file that already exists is kind of painful to write in the driver/engine world; the engine, which detects the problem, has to ask the driver to do the confirmation prompting.
-
 
 
 It's important to design the engine so that it not only does the right thing, but also notifies the driver about what it's doing so the driver can present a graceful interface with appropriate feedback.
 
 The terms "driver" and "engine" are uncommon but established in the Unix community.
 
-
 A client/server pair is like a driver/engine pair, except that the engine part is a daemon running in background which is not expected to be run interactively, and does not have its own user interface. Usually, the daemon is designed to mediate access to some sort of shared resource — a database, or a transaction stream, or specialized shared hardware such as a sound device. Another reason for such a daemon may be to avoid performing expensive startup actions each time the program is invoked.
 
 Yesterday's paradigmatic example was the ftp/ftpd pair that implements FTR the File Transfer Protocol; or perhaps two instances of sendmail, sender in foreground and listener in background, passing Internet email. Today's would have to be any browser/web server pair.
 
 However, this pattern is not limited to communication programs; another important case is in databases, such as the psql/postmaster pair. In this one, psql serializes access to a shared
-
-
-
-
-
-
 
 These examples illustrate an important property of such pairs, which is that the cleanliness of the protocol that serializes communication between them is all-important. If it is well-defined and described by an open standard, it can become a tremendous opportunity for leverage by insulating client programs from the details of how the server's resource is managed, and allowing clients and servers to evolve semi-independently. All separated-engine-and-interface programs potentially get this kind of benefit from clean separation of function, but in the client/server case the payoffs for getting it right tend to be particularly high exactly because managing shared resources is intrinsically difficult.
 
@@ -5598,14 +5381,6 @@ One of the classic interface patterns is therefore a CLI server. This is a progr
 In some variants of this pattern, the server backgrounds itself by default, and has to be told with a command-line switch when it should stay in foreground. This is a detail; the essential point is that most of the code neither knows nor cares whether it is running in foreground or a TCP/IP harness.
 
 POP, IMAP, SMTP, and HTTP servers normally obey this pattern. It can be combined with any of the server/client patterns described earlier in this chapter. An HTTP server can also act as a harness
-
-
-
-
-
-
-
-
 
 Though this pattern is quite traditional, the term "CLI server" is my invention.
 
@@ -5643,76 +5418,16 @@ Thus, when "choose the simplest pattern" conflicts with a requirement to produce
 
 In fact, by combining a theme from Chapter 7 with this idea, we can perhaps name a new design pattern emerging under Linux and other modern, open-source Unixes where GUIs are not merely a reluctant add-on but an active focus of lots of development effort.
 
-
-
 '"Script-Fu page [http://www.xcf.berkeley.edu/~gimp/script-fu/script-fu.html].
-
-
-
-
-
-
-
-
 
 A polyvalent program has the following traits:
 
-
-
-
-
-
-
-
-
-
-
 Figure 11.4. Caller/callee relationships in a polyvalent program.
-
-
-
-
-
-X LI5CL"5
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Notably, the GIMP actually fulfills this pattern.
 
 
 Separating your CLI back end from a GUI interface has become an even more attractive strategy since the transformation of computing by the World Wide Web in the mid-1990s. For a large class of applications, it makes increasing sense not to write a custom GUI front end at all, but rather to press Web browsers into service in that role.
-
-
-
-
-
-
-
-
 
 This approach has many advantages. The most obvious is that you don't have to write procedural GUI code — instead, you can describe the GUI you want in languages (HTML and JavaScript) that are specialized for it. This avoids a lot of expensive and complex single-purpose coding and often more than halves the total project effort. Another is that it makes your application instantly Internet- ready; the front end may be on the same host as the back end, or may be a thousand miles away. Yet another is that all the minor presentation details of the application (such as fonts and color) are no longer your back end's problem, and indeed can be customized by users to their own tastes through mechanisms like browser preferences and cascading style sheets. Finally, the uniform elements of the Web interface substantially ease the user's learning task.
 
@@ -5726,15 +5441,6 @@ This is essentially a batch style of interaction, not that far removed in concep
 
 Java applets can open up their own character-stream connections back to the server to support smoother interactivivity. But Java has technical problems (it can only use a fixed display area on the page, and can't change the portion of the display outside that rectangle) and much worse political ones (proprietary licensing from Sun has stalled Java deployment and made others reluctant to commit to it; you can't count on every user's browser to support it).
 
-Both Java and JavaScript can run into browser incompatibilities, as well. Microsoft's resistance to implementing JDK 1.2 and Swing on Internet Explorer is a serious problem for Java applets, and
-
-
-
-
-
-
-
-
 As an independent issue, it is tricky to maintain session information across multiple CGI forms. The server doesn't keep any state about client sessions between CGI transactions, so you can't rely on it to connect later form submissions with earlier ones by the same user. There are two standard dodges around this: chained forms and browser cookies.
 
 When you chain forms, you arrange for the CGI for the first form to generate a unique ID in an invisible field of the second form, and for the second and all subsequent forms to pass that ID to their successors. Cookies give a similar effect in a less direct way analogous to environment variables (see any of the hundreds of books on CGI design for details). In either case, your CGI has to use the ID as a session index (or cookies to cache state directly) and to handle multiplexing the sessions explicitly.
@@ -5746,14 +5452,6 @@ The session management problem can be addressed with application servers like Zo
 As usual, the best advice is to choose the simplest pattern possible. Resist the temptation to do a heavyweight design relying on Java or an application server when simple CGIs and cookies will do the job.
 
 One problem with the browser-as-universal-front-end approach is that CGI back ends aren't readily separable from the browser environment, so it can be hard to script or automate transactions to the
-
-
-
-
-
-
-
-
 
 The way that browsers decouple front and back ends has larger implications. On the Web, locking in consumers to closed, proprietary protocols and APIs has become more difficult and less attractive as this trend has advanced. The economics of software development are therefore tilting toward HTML, XML, and other open, text-based Internet standards. This trend synergizes in interesting ways with the evolution of the open-source development model, which we'll survey in Chapter 19. In the world that the Web is creating, Unix's design tradition — including the approaches to interface design we've surveyed in this chapter — looks more at home than ever before.
 
@@ -5767,16 +5465,7 @@ Here's a third: Junk messages are a careless waste of the human user's bandwidth
 
 Go ahead and give your GUIs progress bars for long operations. That's good style — it helps the user time-share his brain efficiently by cuing him that he can go off and read mail or do other things while waiting for completion. But don't clutter GUI interfaces with confirmation popups except when you have to guard operations that might lose or trash data — and even then, hide them when the parent window is minimized, and bury them unless the parent window has focus. 111 Your job as an interface designer is to assist the user, not to gratuitously get in his face.
 
-
-
 'If your windowing system supports translucent popups that intrude less between the user and the application, use them.
-
-
-
-
-
-
-
 
 In general, it's bad style to tell the user things he already knows ("Program <foo> is starting up...", or "Program <foo> is exiting" are two classic offenders). Your interface design as a whole should obey the Rule of Least Surprise, but the content of messages should obey a Rule of Most Surprise
 — be chatty only about things that deviate from what's normally expected.
@@ -5784,11 +5473,6 @@ In general, it's bad style to tell the user things he already knows ("Program <f
 This rule has even greater force for confirmation prompts. Constantly asking for confirmation where the answer is almost always "yes" conditions the user to press "yes" without thinking about it, a habit that can have very unfortunate consequences. Programs should request confirmation only when there is good reason to suspect that the answer might be "no no no!" A confirmation request that is not a surprise is a strong hint of bad design. Any confirmation prompts at all may be a sign that what your interface really needs is an undo command.
 
 If you want chatty progress messages for debugging purposes, disable them by default with a verbosity switch. Before releasing for production, relegate as many of the normal messages as possible to being displayed only when the verbosity switch is on.
-
-
-
-
-
 
 Premature optimization is the root of all evil.
 
@@ -6696,7 +6380,7 @@ This architecture means that all the information about a given output format liv
 
 
 
-"T7D"
+
 
 
 
@@ -6759,7 +6443,6 @@ At about 3300 lines, this application is probably pushing the size and complexit
 
 
 
-TTT
 
 
 
@@ -6880,7 +6563,7 @@ Python excels at rapid prototyping of GUI interfaces, and (as fetchmailconf illu
 
 
 
-~T7B~
+
 
 
 
@@ -7128,130 +6811,14 @@ GTK began life as a replacement for Motif, and was invented to support the GIMP.
 
 Qt is a toolkit associated with the KDE project. It is natively a C++ library; bindings are available for Python and Perl but do not ship with the stock interpreters. Qt has a reputation for having the best-designed and most expressive API of these four, but adoption was initially hindered by
 
-
-
-
-
-
-
-
 As of mid-2003 few detailed comparisons have been written, but a Web search for "X toolkit comparison" may turn up some useful hits. Table 14.2 summarizes the state of play.
-
-
-
-
-
-
-Native language
-
-
-Shipped with
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GTK
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-KDE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 Architecturally, these libraries are all written at about the same abstraction level. GTK and Qt use a slot-and-signal apparatus for event-handling so similar that ports between them have been reported to be almost trivial. Your choice among them will probably be conditioned more by the availability of bindings to your chosen development language than anything else.
 
-
-
-
-
-
-
 Unix is user-friendly — it's just choosy about who its friends are.
-
-
 
 Unix has a long-established reputation as a good environment to develop under. It's well equipped with tools written by programmers for programmers. These automate away many of the grubby little tasks that would otherwise distract you from concentrating on the most important (and most enjoyable!) aspect of development — your design.
 
@@ -7264,14 +6831,6 @@ IDEs make a lot of sense for single-language programming in a tool-poor environm
 IDEs do exist under Unix (there are several good open-source ones, including emulations of the major Macintosh and Windows IDEs). But it's difficult to control an open-ended variety of programming tools with them, and they're not much used. Unix encourages a more flexible style, one less exclusively centered on the edit/compile/debug loop.
 
 In this chapter we introduce you to the tactics of development under Unix — building code, managing code configurations, profiling, debugging, and automating away a lot of the drudgery associated with these tasks so you can concentrate on the fun parts. As usual, the exposition focuses
-
-
-
-~3SS~
-
-
-
-
 
 Many of these tools automate things that you could do yourself by hand, albeit more slowly and with a higher error rate. The one-time cost of climbing the learning curve should be more than paid off by the ability to write programs more efficiently, and spend less attention on low-level details and more on design.
 
@@ -7319,7 +6878,7 @@ The standard Emacs, universally available on modern Unixes, is GNU Emacs; this i
 
 
 
-"39TT
+
 
 
 
@@ -7625,13 +7184,6 @@ Code evolution raises several practical problems that can be major sources of fr
 Perhaps the most important problem is reversion. If you make a change, and discover it's not viable, how can you revert to a code version that is known good? If reversion is difficult or unreliable, it's hard to risk making changes at all (you could trash the whole project, or make many hours of painful work for yourself).
 
 
-
-"TOT
-
-
-
-
-
 Almost as important is change tracking. You know your code has changed; do you know why? It's easy to forget the reasons for changes and step on them later. If you have collaborators on a project, how do you know what they have changed while you weren't looking, and who was responsible for each change?
 
 Amazingly often, it is useful to ask what you have changed since the last known- good version, even if you have no collaborators. This often uncovers unwanted changes, such as forgotten debugging code. I now do this routinely before checking in a set of changes.
@@ -7786,7 +7338,6 @@ Profilers for compiled languages rely on instrumenting object code, so they are 
 
 
 
-THT
 
 
 
@@ -7850,7 +7401,7 @@ See the subsection of the Emacs on-line documentation titled Version Control for
 
 
 
-~?LT~
+
 
 
 
@@ -7901,7 +7452,6 @@ Unix supports reuse at every level from individual library modules up to entire 
 
 
 
-TUT
 
 
 
@@ -7982,7 +7532,7 @@ In Chapter 6, we observed how central transparency is to good software. Object-c
 
 
 
-~7TE~
+
 
 
 
@@ -8149,7 +7699,7 @@ In the proprietary software world, the license terms are designed to protect the
 
 
 
-~WI5~
+
 
 
 
@@ -8274,7 +7824,7 @@ Finally, the people who put their work under open-source licenses are generally 
 
 
 
-"33TT
+
 
 
 
@@ -8482,7 +8032,7 @@ The next player on the scene was X/Open (later renamed the Open Group), a consor
 
 
 
-"44TT
+
 
 
 
@@ -8983,7 +8533,6 @@ This text will be back in the default (Roman) font.
 
 These lines, going back to "This is running text", will
 
-.bp
 
 The bp request forces a new page and a paragraph break.
 
@@ -9001,12 +8550,10 @@ The . sp request emits the number of blank lines given as argument
 
 
 
-.nf
 
 The nf request switches off paragraph filling. Until the fi request switches it back on whitespace and layout will be preserved.
 
 One word in this line will be in \fBbold\fR font,
-.fi
 
 Paragraph filling is back on.
 
@@ -9093,7 +8640,6 @@ The Texinfo tools can now generate HTML. But they don't do a very good or comple
 
 
 
-POD
 
 Plain Old Documentation is the markup system used by the maintainers of Perl. It generates manual pages, and has all the familiar problems of presentation-level markups, including trouble generating good HTML.
 
@@ -9281,7 +8827,6 @@ To turn your documents into HTML or PostScript, you need an engine that can appl
 
 
 
-TJW
 
 
 
@@ -9300,7 +8845,6 @@ The awkward case is print. Generating high-quality printed output — which mean
 
 
 
-TTT
 
 
 
@@ -9318,7 +8862,6 @@ Figure 18.3 illustrates what the FOP toolchain looks like.
 
 
 
-TIT
 
 
 
@@ -9715,7 +9258,7 @@ Some projects and communities have well-defined conventions for names and versio
 
 
 
-~4SS~
+
 
 
 
@@ -10063,7 +9606,7 @@ If you must write your own license, be sure to have it certified by OSI. This wi
 
 
 
-"3UD"
+
 
 
 
@@ -10176,13 +9719,6 @@ The proprietary-Unix vendors, accustomed to the fatter margins from selling more
 Whether or not Linux ever does substantially better than this, the nature of the Unix community's response is already clear. We examined it in the study of Linux in Chapter 3. It includes adopting a few technologies (such as XML) from elsewhere, and putting a lot of effort into naturalizing GUIs into the Unix world. But underneath the themed GUIs and the installation packaging, the main emphasis is still on modularity and clean code — on getting the infrastructure for serious, high- reliability computing and communications right.
 
 The history of the large-scale desktop-focused developments like Mozilla and OpenOffice.org that were launched in the late 1990s illustrates this emphasis well. In both these cases, the most important theme in community feedback wasn't demand for new features or pressure to make a ship date — it was distaste for monster monoliths, and a general sense that these huge programs would
-
-
-
-
-
-
-
 
 Despite being accompanied by a great deal of innovation, the responses to all three technologies were conservative with regard to the fundamental Unix design rules — modularity, transparency, separation of policy from mechanism, and the other qualities we've tried to characterize earlier in this book. The learned response of Unix programmers, reinforced over thirty years, was to go back to first principles — to try to get more leverage out of Unix's basic abstractions of streams, namespaces, and processes in preference to layering on new ones.
 
@@ -10483,7 +10019,7 @@ There are other signs that the Unix culture is shedding its insularity as well. 
 
 
 
-"32TT
+
 
 
 
@@ -10522,7 +10058,6 @@ GUI Graphical User Interface. The modern style of application interface using mi
 
 
 
-SIT
 
 
 
@@ -11096,13 +10631,6 @@ Master Foo remained silent, and pointed at an image of the Buddha. Then he point
 "What are you trying to tell me?" asked the programmer.
 
 Master Foo pointed at the programmer's head. Then he pointed at a rock.
-
-
-
-
-
-
-
 
 "Why can't you make yourself clear?" demanded the programmer.
 
